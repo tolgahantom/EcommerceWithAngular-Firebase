@@ -12,4 +12,13 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  product = {
+    id: 1,
+    name: "iphone 15",
+    price: 20000,
+    imageUrl: "1.jpeg",
+    description: "iyi telefon",
+    isActive: true
+  }
+
 }
