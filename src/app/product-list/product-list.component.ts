@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
 
   product = {
     id: 1,
-    name: "iphone 15",
+    name: "iphone 14",
     price: 20000,
     imageUrl: "1.jpeg",
     description: "iyi telefon",
@@ -23,17 +23,17 @@ export class ProductListComponent implements OnInit {
 
   productList= ["iphone 14", "iphone 15", "iphone 16","iphone 17"];
 
-  products= [
+  products:any= [
     {
       id: 1,
       name: "iphone 14",
       price: 20000,
       imageUrl: "1.jpeg",
       description: "iyi telefon",
-      isActive: true
+      isActive: false
     },
     {
-      id: 2,
+      id: 2, 
       name: "iphone 15",
       price: 30000,
       imageUrl: "2.jpeg",
