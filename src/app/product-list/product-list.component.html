@@ -1,10 +1,33 @@
-<div *ngFor="let product of products" >
-    <div *ngIf="product.isActive" class="card mb-3">
-        <div class="row">
-            <div class="col-3">
-                <img src="/assets/images/{{ product.imageUrl }}" alt="" class="img-fluid rounded-start">
+<div *ngIf="getProducts().length>0; else noProducts">
+    <ng-template [ngTemplateOutlet]="productList1" [ngTemplateOutletContext]="{products: getProducts()}"></ng-template>
+    <ng-template [ngTemplateOutlet]="productList2" [ngTemplateOutletContext]="{products: getProducts()}"></ng-template>
+</div>
+
+<ng-template #productList1 let-products="products">
+    <h2>En çok satanlar</h2>
+    <div *ngFor="let product of products" >
+        <div *ngIf="product.isActive" class="card mb-3">
+            <div class="row">
+                <div class="col-3">
+                    <img src="/assets/images/{{ product.imageUrl }}" alt="" class="img-fluid rounded-start">
+                </div>
+                <div class="col-9">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="cart-text">{{ product.description }}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-9">
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #productList2 let-products="products">
+    <h2>En beğenilenler</h2>
+    <div class="row">
+        <div *ngFor="let product of products" class="col-3">
+            <div *ngIf="product.isActive" class="card mb-3">
+                <img src="/assets/images/{{ product.imageUrl }}" alt="" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="cart-text">{{ product.description }}</p>
@@ -12,30 +35,10 @@
             </div>
         </div>
     </div>
-</div>
+</ng-template>
 
-<div class="alert alert-warning" *ngIf="products.length == 0">
-    no products
-</div>
-
-<div class="card mb-3" *ngIf="product.isActive">
-    <div class="row">
-        <div class="col-3">
-            <img src="/assets/images/1.jpeg" alt="" class="img-fluid rounded-start">
-        </div>
-        <div class="col-9">
-            <div class="card-body">
-                <h5 class="card-title">IPhone 22</h5>
-                <p class="cart-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos perspiciatis fuga quasi vitae veritatis numquam repellendus mollitia corporis. Iusto, consectetur?</p>
-            </div>
-        </div>
+<ng-template #noProducts>
+    <div class="alert alert-warning">
+        no products
     </div>
-</div>
-
-
-
-<ul *ngIf="productList.length > 1">
-    <li *ngFor="let p of productList">
-        {{ p }}
-    </li>
-</ul>
+</ng-template>
