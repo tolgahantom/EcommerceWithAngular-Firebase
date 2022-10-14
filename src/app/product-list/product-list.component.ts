@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../models/product';
+import { ProductRepository } from '../models/product.repository';
 
 @Component({
   selector: 'product-list',
@@ -7,20 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  products: Product[];
+  productRepository: ProductRepository;
 
-  ngOnInit(): void {
+  constructor() { 
+    this.productRepository = new ProductRepository();
+    this.products = this.productRepository.getProducts();
   }
 
-  private products : any[] = [
-
-    { id: 1, name: "iphone 14", price: 20000, imageUrl: "1.jpeg", description: "iyi telefon", isActive: true },
-    { id: 2, name: "iphone 15", price: 30000, imageUrl: "2.jpeg", description: "iyi telefon", isActive: true },
-    { id: 3, name: "iphone 16", price: 40000, imageUrl: "3.jpeg", description: "iyi telefon", isActive: true }   
-  ];
-
-  getProducts() {
-    return this.products.filter(p=>p.isActive);
+  ngOnInit(): void {
   }
 
 }
