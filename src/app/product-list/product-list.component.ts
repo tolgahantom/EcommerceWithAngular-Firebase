@@ -10,6 +10,7 @@ import { ProductRepository } from '../models/product.repository';
 export class ProductListComponent implements OnInit {
 
   products: Product[];
+  selectedProduct: Product | null;
   productRepository: ProductRepository;
 
   constructor() { 
@@ -18,6 +19,14 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  selectProduct(product: Product) {
+    this.selectedProduct = product;
+  }
+
+  unselectProduct() {
+    this.selectedProduct = null;
   }
 
 }

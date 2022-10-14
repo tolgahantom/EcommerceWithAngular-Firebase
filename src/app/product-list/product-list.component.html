@@ -1,3 +1,18 @@
+<div class="card mb-3 p-1 border border-warning" *ngIf="selectedProduct">
+    <div class="row">
+        <div class="col-3">
+            <img src="/assets/images/{{ selectedProduct.imageUrl }}" alt="" class="img-fluid rounded-start">
+        </div>
+        <div class="col-9">
+            <div class="card-body">
+                <h5 class="card-title">{{ selectedProduct.name }}</h5>
+                <p class="cart-text">{{ selectedProduct.description }}</p>
+                <button (click)="unselectProduct()" class="btn btn-primary">Seçimi Kaldır</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div *ngIf="products.length>0; else noProducts">
     <ng-template [ngTemplateOutlet]="productList" [ngTemplateOutletContext]="{products: products}"></ng-template>
 </div>
@@ -13,6 +28,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="cart-text">{{ product.description }}</p>
+                        <button (click)="selectProduct(product)" class="btn btn-primary">Ürünü Seç</button>
                     </div>
                 </div>
             </div>
