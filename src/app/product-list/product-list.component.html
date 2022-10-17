@@ -1,4 +1,4 @@
-<product [prd]="selectedProduct" *ngIf="selectedProduct"></product>
+<product [prd]="selectedProduct" (unSelectEvent)="unselectProduct()" *ngIf="selectedProduct"></product>
 
 <div *ngIf="products.length>0; else noProducts">
     <ng-template [ngTemplateOutlet]="productList" [ngTemplateOutletContext]="{products: products}"></ng-template>
