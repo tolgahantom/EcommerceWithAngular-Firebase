@@ -1,0 +1,22 @@
+<h2>Katagori Düzenleme</h2>
+<ul class="list-group" *ngIf="categories">
+  <li
+    class="list-group-item d-flex justify-content-between align-items-center"
+    *ngFor="let category of categories"
+  >
+    {{ category.name }}
+    <div class="buttons">
+      <button class="btn btn-danger me-3" (click)="deleteCategory(category.id)">
+        Kategori Sil
+      </button>
+      <button
+        class="btn btn-warning"
+        [routerLink]="['/category/' + category.id]"
+      >
+        Kategori Düzenle
+      </button>
+    </div>
+  </li>
+</ul>
+
+<div class="alert alert-warning" *ngIf="!categories">Kategori Bulunamadı</div>

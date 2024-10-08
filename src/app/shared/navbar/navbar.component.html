@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a routerLink="/" class="navbar-brand">Shop App</a>
+    <button
+      class="navbar-toggler"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a [routerLink]="['/products']" class="nav-link">Ürünler</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a [routerLink]="['/products/create']" class="nav-link">Ürün Ekle</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a [routerLink]="['/category/create']" class="nav-link"
+            >Kategori Ekle</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a [routerLink]="['/category/edit']" class="nav-link"
+            >Kategori Düzenleme</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a [routerLink]="['/account']" class="nav-link">Giriş Yap</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated" (click)="logout()">
+          <a [routerLink]="['/account']" class="nav-link">Çıkış Yap</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
